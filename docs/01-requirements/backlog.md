@@ -8,3 +8,4 @@
 |-----|--------|--------|--------|--------|
 | 001 | 2026-08-02 | [[01-spec/20260802-001-dine-in-qr-table-ordering|ระบบสั่งกาแฟที่โต๊ะด้วย QR Code]] | สั่งกาแฟที่โต๊ะผ่านสแกน QR + จ่ายก่อนเข้าครัว + ขึ้นจอ KDS | Backlog |
 | 002 | 2026-08-02 | [[01-spec/20260802-002-sales-dashboard|Dashboard ดูยอดขาย]] | ยอดขายรวมตามช่วงเวลา + แยกตามเมนู เฉพาะเจ้าของร้าน/ผู้จัดการ | Backlog |
+| 003 | 2026-08-02 | [[01-spec/20260802-003-log-retention-pdpa-compliance|การเก็บ Log และการปฏิบัติตาม PDPA]] | Retention 90 วันสำหรับ order/payment/table log + privacy notice + สิทธิ์เจ้าของข้อมูลแบบ manual | Backlog |
