@@ -2,7 +2,7 @@
 
 เก็บ **แผนการทดสอบ (Test Plan)** ที่เตรียมไว้ก่อนลงมือทดสอบจริง เช่น
 
-- Test case / test scenario ของแต่ละฟีเจอร์
+- Test case / test scenario ของแต่ละฟีเจอร์ — ดู [[20260815-001-dine-in-qr-table-ordering|test plan: สั่งกาแฟที่โต๊ะด้วย QR Code]] (ฟีเจอร์ Must have แรก)
 - เงื่อนไขและข้อมูลที่ใช้ในการทดสอบ (test data)
 - ขอบเขตของการทดสอบ (in scope / out of scope)
 
