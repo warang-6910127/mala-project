@@ -26,6 +26,12 @@ invoke `prototype-writer`.
 
 - If the user named specific requirement(s)/feature(s)/spec(s) in their
   request, use exactly those.
+- If the user explicitly asks for an **interactive**/clickable **HTML**
+  prototype (not just "prototype" or "wireframe"), note that this run
+  additionally needs Workflow C — see step 5a. This is an optional
+  supplement per `CLAUDE.md`'s "ข้อยกเว้น: Interactive Prototype" exception;
+  Markdown wireframes are still required as the base output for every
+  screen in scope, regardless of whether HTML is also requested.
 - Otherwise, default to every **Must have** and **Should have** feature in
   `docs/01-requirements/02-plan/feature-list.md` that doesn't already have a
   prototype screen in the latest version folder (see step 4). State this
@@ -92,6 +98,10 @@ Workflow B:
   editing v{N} in place — per the step-3 decision.
 - **หน้าจอที่จะสร้าง/แก้ไข**: list of screen files planned, one per journey
   step/persona flow in scope, with a one-line description each.
+- **Interactive HTML (ถ้าผู้ใช้ขอ)**: state explicitly that this is an
+  optional supplement living at `prototypes/v{N}/interactive/`, alongside
+  (not instead of) the Markdown screens, and which flow/states it will
+  demonstrate.
 
 Ask for explicit confirmation. If the user wants changes (different scope,
 different version decision, different screens), adjust and re-propose —
@@ -106,6 +116,16 @@ Invoke with `subagent_type: prototype-writer`, passing:
 - The confirmed screen list from step 4.
 
 Let it write/update the version folder's `index.md` and one file per screen.
+
+### 5a. Delegate Workflow C (only if interactive HTML was requested)
+
+After Workflow B completes (the Markdown screens must exist first — Workflow
+C supplements them), invoke `prototype-writer` again for Workflow C, passing:
+- Which screens/flow in the just-written version folder to make interactive.
+- Confirmation that this is additive — Markdown screens are not replaced.
+
+Let it write the self-contained HTML/CSS/JS file(s) to
+`prototypes/v{N}/interactive/` plus that subfolder's own `index.md`.
 
 ### 6. Update cross-links
 
@@ -136,10 +156,15 @@ Summarize in Thai, concisely:
 
 ## Notes
 
-- This project has no source code, build, lint, or test commands — the
-  prototypes themselves are plain Markdown wireframes (ASCII box layout),
-  **never HTML/CSS/JS** — that would contradict `CLAUDE.md`'s "this is not a
-  codebase" rule. Don't suggest otherwise even if it seems more "real".
+- This project has no source code, build, lint, or test commands. Every
+  screen in scope still gets a plain Markdown wireframe (ASCII box layout)
+  as the required, default output. An interactive HTML/CSS/JS prototype is
+  allowed **only** as an optional supplement, only when the user explicitly
+  asks for one, and only under `prototypes/v{N}/interactive/` as
+  self-contained static files (no build step, no package manifest, no
+  external dependency) — per `CLAUDE.md`'s "ข้อยกเว้น: Interactive
+  Prototype" exception. Don't default to HTML, and don't build it in place
+  of the Markdown screens.
 - Never delete a version folder or a screen file — old versions are kept as
   history. If a version is ever truly obsolete, move it under
   `docs/00-archived/` per `CLAUDE.md`, don't delete it.
